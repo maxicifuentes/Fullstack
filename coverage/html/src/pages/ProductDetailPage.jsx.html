@@ -1,0 +1,148 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for src/pages/ProductDetailPage.jsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/pages</a> ProductDetailPage.jsx</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>13/13</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>8/8</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>7/7</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>8/8</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import ProductCard from '../components/ProductCard';
+import { useStore } from '../store/StoreContext';
+import { discountPercent, money } from '../utils/appUtils';
+&nbsp;
+export default function ProductDetailPage() {
+  const { id } = useParams();
+  const { state, dispatch } = useStore();
+  const product = state.products.find((item) =&gt; item.id === Number(id));
+  const [quantity, setQuantity] = useState(1);
+  if (!product) return &lt;div className="container py-5 empty-state"&gt;&lt;h1&gt;Producto no encontrado&lt;/h1&gt;&lt;Link to="/catalogo" className="btn btn-primary"&gt;Volver al catálogo&lt;/Link&gt;&lt;/div&gt;;
+  return &lt;&gt;
+    &lt;section className="container py-5"&gt;&lt;nav aria-label="migas de pan"&gt;&lt;ol className="breadcrumb"&gt;&lt;li className="breadcrumb-item"&gt;&lt;Link to="/catalogo"&gt;Catálogo&lt;/Link&gt;&lt;/li&gt;&lt;li className="breadcrumb-item active"&gt;{product.nombre}&lt;/li&gt;&lt;/ol&gt;&lt;/nav&gt;
+      &lt;div className="row g-5 align-items-center"&gt;&lt;div className="col-lg-6"&gt;&lt;div className="detail-art" style={{ '--cover': product.color }}&gt;&lt;span&gt;{product.codigo}&lt;/span&gt;&lt;i className="bi bi-controller" /&gt;{product.precioAnterior &amp;&amp; &lt;b&gt;-{discountPercent(product)}%&lt;/b&gt;}&lt;/div&gt;&lt;/div&gt;
+        &lt;div className="col-lg-6"&gt;&lt;span className="eyebrow"&gt;{product.categoria} · {product.plataforma}&lt;/span&gt;&lt;h1 className="display-4 fw-bold mt-2"&gt;{product.nombre}&lt;/h1&gt;&lt;div className="d-flex gap-3 align-items-center my-3"&gt;&lt;span&gt;&lt;i className="bi bi-star-fill text-warning" /&gt; {product.rating}&lt;/span&gt;&lt;span className="text-secondary"&gt;Código {product.codigo}&lt;/span&gt;&lt;/div&gt;&lt;p className="lead text-secondary"&gt;{product.descripcion}&lt;/p&gt;&lt;div className="my-4"&gt;{product.precioAnterior &amp;&amp; &lt;span className="old-price fs-5 me-3"&gt;{money(product.precioAnterior)}&lt;/span&gt;}&lt;strong className="display-6 price"&gt;{money(product.precio)}&lt;/strong&gt;&lt;/div&gt;&lt;p className={product.stock &lt;= product.stockCritico ? 'text-warning' : 'text-success'}&gt;&lt;i className="bi bi-box-seam" /&gt; {product.stock} unidades disponibles&lt;/p&gt;&lt;div className="d-flex flex-wrap gap-3 mt-4"&gt;&lt;div className="quantity-control"&gt;&lt;button onClick={() =&gt; setQuantity(Math.max(1, quantity - 1))} aria-label="Disminuir cantidad"&gt;−&lt;/button&gt;&lt;strong&gt;{quantity}&lt;/strong&gt;&lt;button onClick={() =&gt; setQuantity(Math.min(product.stock, quantity + 1))} aria-label="Aumentar cantidad" disabled={quantity &gt;= product.stock}&gt;+&lt;/button&gt;&lt;/div&gt;&lt;button className="btn btn-primary btn-lg flex-grow-1" disabled={!product.stock} onClick={() =&gt; dispatch({ type: 'ADD_CART', payload: { id: product.id, quantity } })}&gt;&lt;i className="bi bi-bag-plus" /&gt; Añadir al carrito&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+    &lt;section className="container py-5"&gt;&lt;div className="section-heading"&gt;&lt;div&gt;&lt;span className="eyebrow"&gt;También te puede gustar&lt;/span&gt;&lt;h2&gt;Más aventuras&lt;/h2&gt;&lt;/div&gt;&lt;/div&gt;&lt;div className="row g-4"&gt;{state.products.filter((item) =&gt; item.id !== product.id).slice(0, 3).map((item) =&gt; &lt;div className="col-md-4" key={item.id}&gt;&lt;ProductCard product={item} compact /&gt;&lt;/div&gt;)}&lt;/div&gt;&lt;/section&gt;
+  &lt;/&gt;;
+}
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2026-10-06T23:47:55.144Z
+            </div>
+        <script src="../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
+    </body>
+</html>
+    

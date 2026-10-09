@@ -1,0 +1,400 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for src/pages/AdminPages.jsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/pages</a> AdminPages.jsx</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">99.05% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>105/106</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">98.48% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>65/66</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>43/43</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>56/56</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">120x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">50x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">182x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">192x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">83x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">68x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">90x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">859x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from 'react';
+import { Link, NavLink, Outlet, useNavigate, useParams } from 'react-router-dom';
+import { useStore } from '../store/StoreContext';
+import { money } from '../utils/appUtils';
+&nbsp;
+export function AdminLayout() {
+  const { state } = useStore();
+  const links = [['/admin','bi-grid','Resumen'],['/admin/productos','bi-box','Productos'],['/admin/usuarios','bi-people','Usuarios'],['/admin/ordenes','bi-receipt','Órdenes']];
+  return &lt;div className="admin-shell"&gt;&lt;aside className="admin-sidebar"&gt;&lt;Link className="brand" to="/"&gt;&lt;span className="brand-mark"&gt;&lt;i className="bi bi-controller" /&gt;&lt;/span&gt;&lt;span&gt;CHECKPOINT &lt;b&gt;GAMES&lt;/b&gt;&lt;/span&gt;&lt;/Link&gt;&lt;div className="admin-user"&gt;&lt;span&gt;{state.session?.nombre?.[0]}&lt;/span&gt;&lt;div&gt;&lt;strong&gt;{state.session?.nombre}&lt;/strong&gt;&lt;small&gt;{state.session?.tipo}&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;&lt;nav&gt;{links.filter(([to]) =&gt; to !== '/admin/usuarios' || state.session?.tipo === 'Administrador').map(([to,icon,label]) =&gt; &lt;NavLink key={to} to={to} end={to === '/admin'}&gt;&lt;i className={`bi ${icon}`} /&gt;{label}&lt;/NavLink&gt;)}&lt;/nav&gt;&lt;Link className="back-store" to="/"&gt;&lt;i className="bi bi-arrow-left" /&gt; Volver a la tienda&lt;/Link&gt;&lt;/aside&gt;&lt;main className="admin-content"&gt;&lt;Outlet /&gt;&lt;/main&gt;&lt;/div&gt;;
+}
+&nbsp;
+export function AdminDashboard() {
+  const { state } = useStore(); const low = state.products.filter((item) =&gt; item.stock &lt;= item.stockCritico);
+  const stats = [['bi-box','Productos',state.products.length],['bi-people','Usuarios',state.users.length],['bi-receipt','Órdenes',state.orders.length],['bi-exclamation-triangle','Stock crítico',low.length]];
+  return &lt;&gt;&lt;div className="admin-heading"&gt;&lt;div&gt;&lt;span className="eyebrow"&gt;Panel de gestión&lt;/span&gt;&lt;h1&gt;Resumen ejecutivo&lt;/h1&gt;&lt;p&gt;Una vista rápida del estado de Checkpoint Games.&lt;/p&gt;&lt;/div&gt;&lt;span className="status-badge"&gt;&lt;i className="bi bi-circle-fill" /&gt; Sistema operativo&lt;/span&gt;&lt;/div&gt;&lt;div className="row g-4"&gt;{stats.map(([icon,label,value]) =&gt; &lt;div className="col-sm-6 col-xl-3" key={label}&gt;&lt;article className="stat-card"&gt;&lt;i className={`bi ${icon}`} /&gt;&lt;span&gt;{label}&lt;/span&gt;&lt;strong&gt;{value}&lt;/strong&gt;&lt;/article&gt;&lt;/div&gt;)}&lt;/div&gt;&lt;div className="row g-4 mt-2"&gt;&lt;div className="col-xl-7"&gt;&lt;section className="admin-card"&gt;&lt;div className="admin-card-head"&gt;&lt;h2&gt;Órdenes recientes&lt;/h2&gt;&lt;Link to="/admin/ordenes"&gt;Ver todas&lt;/Link&gt;&lt;/div&gt;&lt;AdminTable headers={['N.º','Cliente','Estado','Total']} rows={state.orders.slice(-5).reverse().map((order) =&gt; [`#${order.id}`,order.cliente,&lt;span className="status-pill" key={order.id}&gt;{order.estado}&lt;/span&gt;,money(order.total)])} /&gt;&lt;/section&gt;&lt;/div&gt;&lt;div className="col-xl-5"&gt;&lt;section className="admin-card"&gt;&lt;div className="admin-card-head"&gt;&lt;h2&gt;Alertas de stock&lt;/h2&gt;&lt;/div&gt;{low.length ? low.map((product) =&gt; &lt;div className="stock-alert" key={product.id}&gt;&lt;span style={{ background: product.color }}&gt;{product.codigo.slice(0,2)}&lt;/span&gt;&lt;div&gt;&lt;strong&gt;{product.nombre}&lt;/strong&gt;&lt;small&gt;{product.stock} disponibles · crítico {product.stockCritico}&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;) : &lt;p className="text-secondary"&gt;No hay alertas.&lt;/p&gt;}&lt;/section&gt;&lt;/div&gt;&lt;/div&gt;&lt;/&gt;;
+}
+&nbsp;
+export function AdminProducts() {
+  const { state, dispatch } = useStore(); const canEdit = state.session?.tipo === 'Administrador';
+  const rows = state.products.map((product) =&gt; [product.codigo,product.nombre,product.categoria,money(product.precio),product.stock,&lt;div className="table-actions" key={product.id}&gt;&lt;Link className="btn btn-sm btn-outline-light" to={`/admin/productos/${product.id}`}&gt;Ver&lt;/Link&gt;{canEdit &amp;&amp; &lt;&gt;&lt;Link className="btn btn-sm btn-primary" to={`/admin/productos/${product.id}/editar`}&gt;Editar&lt;/Link&gt;&lt;button className="btn btn-sm btn-outline-danger" onClick={() =&gt; window.confirm(`¿Eliminar ${product.nombre}?`) &amp;&amp; dispatch({ type: 'DELETE_PRODUCT', payload: product.id })}&gt;Eliminar&lt;/button&gt;&lt;/&gt;}&lt;/div&gt;]);
+  return &lt;section className="admin-card"&gt;&lt;div className="admin-card-head"&gt;&lt;div&gt;&lt;span className="eyebrow"&gt;Inventario&lt;/span&gt;&lt;h1&gt;Productos&lt;/h1&gt;&lt;/div&gt;{canEdit &amp;&amp; &lt;Link className="btn btn-primary" to="/admin/productos/nuevo"&gt;&lt;i className="bi bi-plus-lg" /&gt; Nuevo producto&lt;/Link&gt;}&lt;/div&gt;&lt;AdminTable headers={['Código','Nombre','Categoría','Precio','Stock','Acciones']} rows={rows} /&gt;&lt;/section&gt;;
+}
+&nbsp;
+export function AdminProductForm() {
+  const { id } = useParams(); const navigate = useNavigate(); const { state, dispatch } = useStore();
+  const [error, setError] = useState('');
+  const existing = state.products.find((item) =&gt; item.id === Number(id));
+  const [form, setForm] = useState(existing || { codigo:'',nombre:'',descripcion:'',precio:0,precioAnterior:null,stock:0,stockCritico:0,categoria:'Acción',plataforma:'PC',color:'#7957ff',rating:4.5 });
+  const change = (event) =&gt; setForm({ ...form, [event.target.name]: event.target.type === 'number' ? Number(event.target.value) : event.target.value });
+  const submit = (event) =&gt; { event.preventDefault(); if (!form.codigo.trim() || !form.nombre.trim() || form.precio &lt; 0 || form.stock &lt; 0) { setError('Completa código y nombre; precio y stock no pueden ser negativos.'); return; } if (state.products.some((product) =&gt; product.id !== existing?.id &amp;&amp; product.codigo.toLowerCase() === form.codigo.trim().toLowerCase())) { setError('Este código de producto ya está registrado.'); return; } dispatch({ type:'SAVE_PRODUCT', payload:{ ...form, codigo: form.codigo.trim(), nombre: form.nombre.trim(), id: existing?.id || Date.now() } }); navigate('/admin/productos'); };
+  return &lt;section className="admin-card"&gt;&lt;div className="admin-card-head"&gt;&lt;div&gt;&lt;span className="eyebrow"&gt;Mantenedor&lt;/span&gt;&lt;h1&gt;{existing ? 'Editar producto' : 'Nuevo producto'}&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;&lt;form onSubmit={submit}&gt;{error &amp;&amp; &lt;div className="alert alert-danger" role="alert"&gt;{error}&lt;/div&gt;}&lt;div className="row g-3"&gt;{[['codigo','Código','text'],['nombre','Nombre','text'],['precio','Precio','number'],['stock','Stock','number'],['stockCritico','Stock crítico','number'],['plataforma','Plataforma','text']].map(([name,label,type])=&gt;&lt;div className="col-md-6" key={name}&gt;&lt;label className="form-label" htmlFor={name}&gt;{label}&lt;/label&gt;&lt;input className="form-control" id={name} name={name} type={type} min={type==='number'?0:undefined} value={form[name]} onChange={change} required={['codigo','nombre','precio','stock'].includes(name)} /&gt;&lt;/div&gt;)}&lt;div className="col-md-6"&gt;&lt;label className="form-label" htmlFor="categoria"&gt;Categoría&lt;/label&gt;&lt;select className="form-select" id="categoria" name="categoria" value={form.categoria} onChange={change}&gt;{['Acción','Aventura','RPG','Deportes','Carreras','Estrategia','Terror','Indie'].map((item)=&gt;&lt;option key={item}&gt;{item}&lt;/option&gt;)}&lt;/select&gt;&lt;/div&gt;&lt;div className="col-md-6"&gt;&lt;label className="form-label" htmlFor="color"&gt;Color&lt;/label&gt;&lt;input className="form-control form-control-color" id="color" name="color" type="color" value={form.color} onChange={change} /&gt;&lt;/div&gt;&lt;div className="col-12"&gt;&lt;label className="form-label" htmlFor="descripcion"&gt;Descripción&lt;/label&gt;&lt;textarea className="form-control" id="descripcion" name="descripcion" rows="4" maxLength="500" value={form.descripcion} onChange={change} /&gt;&lt;/div&gt;&lt;div className="col-12 d-flex gap-2"&gt;&lt;button className="btn btn-primary"&gt;Guardar producto&lt;/button&gt;&lt;button type="button" className="btn btn-outline-light" onClick={() =&gt; navigate(-1)}&gt;Cancelar&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&lt;/form&gt;&lt;/section&gt;;
+}
+&nbsp;
+export function AdminProductDetail() { const { id }=useParams(); const { state }=useStore(); const product=state.products.find((item)=&gt;item.id===Number(id)); if(!product)return &lt;p&gt;Producto no encontrado.&lt;/p&gt;; return &lt;section className="admin-card"&gt;&lt;div className="admin-card-head"&gt;&lt;div&gt;&lt;span className="eyebrow"&gt;Detalle&lt;/span&gt;&lt;h1&gt;{product.nombre}&lt;/h1&gt;&lt;/div&gt;{state.session?.tipo==='Administrador'&amp;&amp;&lt;Link className="btn btn-primary" to={`/admin/productos/${id}/editar`}&gt;Editar&lt;/Link&gt;}&lt;/div&gt;&lt;div className="row g-4"&gt;&lt;div className="col-lg-5"&gt;&lt;div className="detail-art" style={{'--cover':product.color}}&gt;&lt;span&gt;{product.codigo}&lt;/span&gt;&lt;i className="bi bi-controller" /&gt;&lt;/div&gt;&lt;/div&gt;&lt;div className="col-lg-7"&gt;&lt;dl className="detail-list"&gt;&lt;div&gt;&lt;dt&gt;Categoría&lt;/dt&gt;&lt;dd&gt;{product.categoria}&lt;/dd&gt;&lt;/div&gt;&lt;div&gt;&lt;dt&gt;Plataforma&lt;/dt&gt;&lt;dd&gt;{product.plataforma}&lt;/dd&gt;&lt;/div&gt;&lt;div&gt;&lt;dt&gt;Precio&lt;/dt&gt;&lt;dd&gt;{money(product.precio)}&lt;/dd&gt;&lt;/div&gt;&lt;div&gt;&lt;dt&gt;Stock&lt;/dt&gt;&lt;dd&gt;{product.stock}&lt;/dd&gt;&lt;/div&gt;&lt;/dl&gt;&lt;p className="text-secondary"&gt;{product.descripcion}&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/section&gt;; }
+&nbsp;
+const emptyUser = { nombre: '', apellidos: '', correo: '', clave: '', tipo: 'Cliente', run: '', region: '', comuna: '', direccion: '' };
+&nbsp;
+export function AdminUsers() {
+  const { state, dispatch } = useStore();
+  const [form, setForm] = useState(null);
+  const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
+  const edit = (user) =&gt; { setForm({ ...user }); setError(''); setMessage(''); };
+  const change = (event) =&gt; setForm({ ...form, [event.target.name]: event.target.value });
+  const submit = (event) =&gt; {
+    event.preventDefault();
+    const user = { ...form, nombre: form.nombre.trim(), apellidos: form.apellidos.trim(), correo: form.correo.trim().toLowerCase() };
+    if (!user.nombre || !user.apellidos || !/^\S+@\S+\.\S+$/.test(user.correo) || user.clave.length &lt; 4) {
+      setError('Completa nombre, apellidos, correo válido y una contraseña de al menos 4 caracteres.'); return;
+    }
+    if (state.users.some((item) =&gt; item.id !== user.id &amp;&amp; item.correo.toLowerCase() === user.correo)) {
+      setError('Este correo ya está registrado.'); return;
+    }
+    dispatch({ type: 'SAVE_USER', payload: { ...user, id: user.id || Date.now() } });
+    setForm(null); setError(''); setMessage('Usuario guardado correctamente.');
+  };
+  const remove = (user) =&gt; {
+    if (!window.confirm(`¿Eliminar a ${user.nombre} ${user.apellidos}?`)) return;
+    dispatch({ type: 'DELETE_USER', payload: user.id });
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (form?.id === user.id) <span class="cstat-no" title="statement not covered" >setForm(null);</span>
+    setMessage('Usuario eliminado correctamente.');
+  };
+  const rows = state.users.map((user) =&gt; [
+    `${user.nombre} ${user.apellidos}`, user.correo, user.tipo, user.region || 'No informada',
+    &lt;div className="table-actions" key={user.id}&gt;
+      &lt;button className="btn btn-sm btn-primary" onClick={() =&gt; edit(user)} aria-label={`Editar ${user.correo}`}&gt;Editar&lt;/button&gt;
+      &lt;button className="btn btn-sm btn-outline-danger" disabled={user.id === state.session?.id} onClick={() =&gt; remove(user)} aria-label={`Eliminar ${user.correo}`}&gt;Eliminar&lt;/button&gt;
+    &lt;/div&gt;,
+  ]);
+  return &lt;section className="admin-card"&gt;
+    &lt;div className="admin-card-head"&gt;&lt;div&gt;&lt;span className="eyebrow"&gt;Seguridad&lt;/span&gt;&lt;h1&gt;Usuarios&lt;/h1&gt;&lt;/div&gt;&lt;button className="btn btn-primary" onClick={() =&gt; edit(emptyUser)}&gt;Nuevo usuario&lt;/button&gt;&lt;/div&gt;
+    {message &amp;&amp; &lt;div className="alert alert-success" role="status"&gt;{message}&lt;/div&gt;}
+    {form &amp;&amp; &lt;form onSubmit={submit} noValidate className="p-3 mb-4 border rounded"&gt;
+      &lt;h2 className="h4"&gt;{form.id ? 'Editar usuario' : 'Crear usuario'}&lt;/h2&gt;
+      &lt;div className="row g-3"&gt;
+        {[['nombre', 'Nombre', 'text'], ['apellidos', 'Apellidos', 'text'], ['correo', 'Correo', 'email'], ['clave', 'Contraseña', 'password']].map(([name, label, type]) =&gt; &lt;div className="col-md-6" key={name}&gt;&lt;label className="form-label" htmlFor={`user-${name}`}&gt;{label}&lt;/label&gt;&lt;input id={`user-${name}`} name={name} type={type} className="form-control" value={form[name]} onChange={change} required autoComplete={name === 'clave' ? 'new-password' : 'off'} /&gt;&lt;/div&gt;)}
+        &lt;div className="col-md-6"&gt;&lt;label className="form-label" htmlFor="user-tipo"&gt;Perfil&lt;/label&gt;&lt;select id="user-tipo" name="tipo" className="form-select" value={form.tipo} onChange={change} disabled={form.id === state.session?.id}&gt;{['Cliente', 'Vendedor', 'Administrador'].map((role) =&gt; &lt;option key={role}&gt;{role}&lt;/option&gt;)}&lt;/select&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;p className="form-text"&gt;Tu cuenta activa no se puede eliminar ni cambiar de perfil desde esta pantalla.&lt;/p&gt;
+      {error &amp;&amp; &lt;div className="alert alert-danger" role="alert"&gt;{error}&lt;/div&gt;}
+      &lt;div className="d-flex gap-2 mt-3"&gt;&lt;button type="submit" className="btn btn-primary"&gt;Guardar usuario&lt;/button&gt;&lt;button type="button" className="btn btn-outline-light" onClick={() =&gt; { setForm(null); setError(''); }}&gt;Cancelar&lt;/button&gt;&lt;/div&gt;
+    &lt;/form&gt;}
+    &lt;AdminTable headers={['Nombre', 'Correo', 'Perfil', 'Región', 'Acciones']} rows={rows} /&gt;
+  &lt;/section&gt;;
+}
+&nbsp;
+export function AdminOrders() {
+  const { state, dispatch } = useStore();
+  const [message, setMessage] = useState('');
+  const statuses = ['Pagada', 'Preparando', 'Enviada', 'Entregada', 'Cancelada'];
+  const update = (id, estado) =&gt; {
+    dispatch({ type: 'UPDATE_ORDER_STATUS', payload: { id, estado } });
+    setMessage(`Orden #${id} actualizada a ${estado}.`);
+  };
+  return &lt;section className="admin-card"&gt;&lt;div className="admin-card-head"&gt;&lt;div&gt;&lt;span className="eyebrow"&gt;Operación&lt;/span&gt;&lt;h1&gt;Órdenes&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;
+    {message &amp;&amp; &lt;div className="alert alert-success" role="status"&gt;{message}&lt;/div&gt;}
+    &lt;AdminTable headers={['N.º', 'Fecha', 'Cliente', 'Estado', 'Ítems', 'Total']} rows={state.orders.slice().reverse().map((order) =&gt; [
+      `#${order.id}`, order.fecha, order.cliente,
+      &lt;select key={order.id} className="form-select" aria-label={`Estado de orden ${order.id}`} value={order.estado} onChange={(event) =&gt; update(order.id, event.target.value)}&gt;{[...new Set([...statuses, order.estado])].map((status) =&gt; &lt;option key={status}&gt;{status}&lt;/option&gt;)}&lt;/select&gt;,
+      order.items, money(order.total),
+    ])} /&gt;
+  &lt;/section&gt;;
+}
+&nbsp;
+function AdminTable({headers,rows}) { return &lt;div className="table-responsive"&gt;&lt;table className="table admin-table align-middle"&gt;&lt;thead&gt;&lt;tr&gt;{headers.map((header)=&gt;&lt;th key={header}&gt;{header}&lt;/th&gt;)}&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;{rows.map((row,index)=&gt;&lt;tr key={index}&gt;{row.map((cell,cellIndex)=&gt;&lt;td key={cellIndex}&gt;{cell}&lt;/td&gt;)}&lt;/tr&gt;)}&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;; }
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2026-10-06T23:47:55.144Z
+            </div>
+        <script src="../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
+    </body>
+</html>
+    

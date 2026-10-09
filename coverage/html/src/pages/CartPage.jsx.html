@@ -1,0 +1,130 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for src/pages/CartPage.jsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/pages</a> CartPage.jsx</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>7/7</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>6/6</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>5/5</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>4/4</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import { Link } from 'react-router-dom';
+import PageHero from '../components/PageHero';
+import { useStore } from '../store/StoreContext';
+import { cartTotals, money } from '../utils/appUtils';
+&nbsp;
+export default function CartPage() {
+  const { state, dispatch } = useStore();
+  const totals = cartTotals(state.cart, state.products);
+  return &lt;&gt;&lt;PageHero eyebrow="Tu selección" title="Carrito de compra" description="Revisa cantidades y confirma tu selección antes de continuar." /&gt;
+    &lt;section className="container pb-5"&gt;&lt;div className="row g-4"&gt;&lt;div className="col-lg-8"&gt;
+      &lt;div className="surface-card overflow-hidden"&gt;{totals.lines.length ? totals.lines.map(({ id, quantity, product }) =&gt; &lt;article className="cart-line" key={id}&gt;&lt;div className="cart-thumb" style={{ '--cover': product.color }}&gt;{product.codigo}&lt;/div&gt;&lt;div className="flex-grow-1"&gt;&lt;span className="eyebrow"&gt;{product.categoria}&lt;/span&gt;&lt;h2 className="h5 mb-1"&gt;{product.nombre}&lt;/h2&gt;&lt;span className="text-secondary small"&gt;{product.plataforma}&lt;/span&gt;&lt;div className="quantity-control mt-3"&gt;&lt;button aria-label="Disminuir cantidad" onClick={() =&gt; dispatch({ type: 'SET_CART_QUANTITY', payload: { id, quantity: quantity - 1 } })}&gt;−&lt;/button&gt;&lt;strong&gt;{quantity}&lt;/strong&gt;&lt;button aria-label="Aumentar cantidad" disabled={quantity &gt;= product.stock} onClick={() =&gt; dispatch({ type: 'SET_CART_QUANTITY', payload: { id, quantity: quantity + 1 } })}&gt;+&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&lt;div className="text-end"&gt;&lt;strong className="price"&gt;{money(product.precio * quantity)}&lt;/strong&gt;&lt;button className="btn btn-link text-danger d-block ms-auto mt-3" onClick={() =&gt; dispatch({ type: 'REMOVE_CART', payload: id })}&gt;&lt;i className="bi bi-trash" /&gt; Quitar&lt;/button&gt;&lt;/div&gt;&lt;/article&gt;) : &lt;div className="empty-state"&gt;&lt;i className="bi bi-bag" /&gt;&lt;h2&gt;Tu carrito está vacío&lt;/h2&gt;&lt;p&gt;Hay muchas aventuras esperando por ti.&lt;/p&gt;&lt;Link className="btn btn-primary" to="/catalogo"&gt;Explorar catálogo&lt;/Link&gt;&lt;/div&gt;}&lt;/div&gt;
+    &lt;/div&gt;&lt;div className="col-lg-4"&gt;&lt;aside className="surface-card summary-card"&gt;&lt;h2 className="h4"&gt;Resumen&lt;/h2&gt;&lt;div className="summary-row"&gt;&lt;span&gt;Productos ({totals.units})&lt;/span&gt;&lt;span&gt;{money(totals.subtotal)}&lt;/span&gt;&lt;/div&gt;&lt;div className="summary-row"&gt;&lt;span&gt;Envío&lt;/span&gt;&lt;span&gt;{totals.shipping ? money(totals.shipping) : 'Gratis'}&lt;/span&gt;&lt;/div&gt;&lt;div className="summary-row total"&gt;&lt;span&gt;Total&lt;/span&gt;&lt;strong&gt;{money(totals.total)}&lt;/strong&gt;&lt;/div&gt;&lt;Link className={`btn btn-primary btn-lg w-100 ${!totals.lines.length ? 'disabled' : ''}`} to="/checkout"&gt;Continuar al checkout&lt;/Link&gt;&lt;p className="text-secondary small mt-3 mb-0"&gt;&lt;i className="bi bi-shield-lock" /&gt; Compra académica segura. No procesa pagos reales.&lt;/p&gt;&lt;/aside&gt;&lt;/div&gt;&lt;/div&gt;&lt;/section&gt;
+  &lt;/&gt;;
+}
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2026-10-06T23:47:55.144Z
+            </div>
+        <script src="../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
+    </body>
+</html>
+    

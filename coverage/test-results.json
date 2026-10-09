@@ -1,0 +1,415 @@
+[
+  {
+    "suite": "Checkout y persistencia",
+    "caso": "limpia comuna al cambiar región",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 39
+  },
+  {
+    "suite": "Checkout y persistencia",
+    "caso": "recupera los datos semilla cuando localStorage contiene JSON inválido",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 12
+  },
+  {
+    "suite": "Checkout y persistencia",
+    "caso": "redirige al carrito cuando checkout está vacío",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 10
+  },
+  {
+    "suite": "Checkout y persistencia",
+    "caso": "rechaza pago de prueba y conserva el carrito para reintentar",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 23
+  },
+  {
+    "suite": "Checkout y persistencia",
+    "caso": "valida checkout y crea un pedido aprobado vaciando el carrito",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 20
+  },
+  {
+    "suite": "Acceso y roles",
+    "caso": "rechaza credenciales incorrectas y permite iniciar y cerrar sesión",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 34
+  },
+  {
+    "suite": "Acceso y roles",
+    "caso": "el vendedor consulta productos sin acciones de modificación",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 5
+  },
+  {
+    "suite": "Acceso y roles",
+    "caso": "redirige login cuando Administrador ya tiene sesión",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 5
+  },
+  {
+    "suite": "Acceso y roles",
+    "caso": "impide al vendedor acceder a usuarios o crear productos",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 16
+  },
+  {
+    "suite": "Acceso y roles",
+    "caso": "redirige login cuando Cliente ya tiene sesión",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 7
+  },
+  {
+    "suite": "Acceso y roles",
+    "caso": "redirige a login cuando no existe sesión",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 5
+  },
+  {
+    "suite": "Acceso y roles",
+    "caso": "registra al cliente, evita duplicados y valida campos",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 20
+  },
+  {
+    "suite": "Acceso y roles",
+    "caso": "impide al cliente acceder al panel",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 6
+  },
+  {
+    "suite": "Administración de usuarios y órdenes",
+    "caso": "crea, edita, persiste y elimina un usuario con confirmación",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 27
+  },
+  {
+    "suite": "Administración de usuarios y órdenes",
+    "caso": "protege la cuenta activa y sincroniza su nombre con la sesión",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 8
+  },
+  {
+    "suite": "Administración de usuarios y órdenes",
+    "caso": "valida usuario vacío y correo duplicado y permite cancelar",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 10
+  },
+  {
+    "suite": "Administración de usuarios y órdenes",
+    "caso": "Vendedor actualiza una orden y mantiene el cambio al recargar",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 8
+  },
+  {
+    "suite": "Administración de usuarios y órdenes",
+    "caso": "Administrador actualiza una orden y mantiene el cambio al recargar",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 6
+  },
+  {
+    "suite": "Administración de productos",
+    "caso": "permite cancelar la edición sin guardar cambios",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 15
+  },
+  {
+    "suite": "Administración de productos",
+    "caso": "rechaza códigos de producto duplicados sin distinguir mayúsculas",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 8
+  },
+  {
+    "suite": "Administración de productos",
+    "caso": "muestra el detalle administrativo para Vendedor",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 3
+  },
+  {
+    "suite": "Administración de productos",
+    "caso": "muestra el detalle administrativo para Administrador",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 2
+  },
+  {
+    "suite": "Administración de productos",
+    "caso": "muestra producto administrativo no encontrado",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 2
+  },
+  {
+    "suite": "Administración de productos",
+    "caso": "muestra resumen sin alertas cuando no hay stock crítico",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 3
+  },
+  {
+    "suite": "Administración de productos",
+    "caso": "crea, edita y elimina un producto y respeta la cancelación",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 25
+  },
+  {
+    "suite": "Administración de productos",
+    "caso": "no guarda productos sin código o con stock negativo",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 5
+  },
+  {
+    "suite": "Administración de productos",
+    "caso": "deshabilita la compra y el incremento cuando el producto no tiene stock",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 5
+  },
+  {
+    "suite": "Reglas de negocio y límites del estado",
+    "caso": "acumula carrito sin superar stock ni aceptar productos inexistentes",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 2
+  },
+  {
+    "suite": "Reglas de negocio y límites del estado",
+    "caso": "elimina cantidades cero, vacía carrito y conserva acciones desconocidas",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 0
+  },
+  {
+    "suite": "Reglas de negocio y límites del estado",
+    "caso": "cierra la sesión si se elimina el usuario activo",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 1
+  },
+  {
+    "suite": "Reglas de negocio y límites del estado",
+    "caso": "filtra texto sin distinguir mayúsculas y filtra ofertas",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 0
+  },
+  {
+    "suite": "Reglas de negocio y límites del estado",
+    "caso": "calcula envío gratis en carrito vacío o subtotal de al menos 50000",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 0
+  },
+  {
+    "suite": "Reglas de negocio y límites del estado",
+    "caso": "rechaza cantidades inválidas y superiores al stock al modificar el carrito",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 2
+  },
+  {
+    "suite": "Checkpoint Games - cobertura unitaria de componentes y lógica",
+    "caso": "5. calcula subtotal, despacho y total del carrito",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 0
+  },
+  {
+    "suite": "Checkpoint Games - cobertura unitaria de componentes y lógica",
+    "caso": "8. actualiza el estado al añadir un producto al carrito",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 0
+  },
+  {
+    "suite": "Checkpoint Games - cobertura unitaria de componentes y lógica",
+    "caso": "7. acepta un checkout con datos válidos",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 0
+  },
+  {
+    "suite": "Checkpoint Games - cobertura unitaria de componentes y lógica",
+    "caso": "10. reacciona a un evento y actualiza el estado del componente",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 3
+  },
+  {
+    "suite": "Checkpoint Games - cobertura unitaria de componentes y lógica",
+    "caso": "9. elimina un producto mediante la operación CRUD del reducer",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 1
+  },
+  {
+    "suite": "Checkpoint Games - cobertura unitaria de componentes y lógica",
+    "caso": "1. renderiza un ProductCard con las props recibidas",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 1
+  },
+  {
+    "suite": "Checkpoint Games - cobertura unitaria de componentes y lógica",
+    "caso": "2. realiza renderizado condicional de la etiqueta de descuento",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 1
+  },
+  {
+    "suite": "Checkpoint Games - cobertura unitaria de componentes y lógica",
+    "caso": "4. filtra productos por texto y categoría",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 1
+  },
+  {
+    "suite": "Checkpoint Games - cobertura unitaria de componentes y lógica",
+    "caso": "3. formatea productos gratuitos de forma comprensible",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 0
+  },
+  {
+    "suite": "Checkpoint Games - cobertura unitaria de componentes y lógica",
+    "caso": "6. informa errores en un checkout incompleto",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 0
+  },
+  {
+    "suite": "Páginas y navegación de la tienda",
+    "caso": "renderiza /catalogo con su encabezado",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 5
+  },
+  {
+    "suite": "Páginas y navegación de la tienda",
+    "caso": "muestra únicamente productos rebajados en ofertas",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 4
+  },
+  {
+    "suite": "Páginas y navegación de la tienda",
+    "caso": "renderiza /categorias con su encabezado",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 4
+  },
+  {
+    "suite": "Páginas y navegación de la tienda",
+    "caso": "envía el formulario de contacto simulado y limpia el mensaje",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 4
+  },
+  {
+    "suite": "Páginas y navegación de la tienda",
+    "caso": "renderiza /ofertas con su encabezado",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 4
+  },
+  {
+    "suite": "Páginas y navegación de la tienda",
+    "caso": "renderiza /nosotros con su encabezado",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 2
+  },
+  {
+    "suite": "Páginas y navegación de la tienda",
+    "caso": "renderiza /carrito con su encabezado",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 3
+  },
+  {
+    "suite": "Páginas y navegación de la tienda",
+    "caso": "renderiza /producto/1 con su encabezado",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 5
+  },
+  {
+    "suite": "Páginas y navegación de la tienda",
+    "caso": "renderiza /pago/error con su encabezado",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 2
+  },
+  {
+    "suite": "Páginas y navegación de la tienda",
+    "caso": "renderiza /contacto con su encabezado",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 2
+  },
+  {
+    "suite": "Páginas y navegación de la tienda",
+    "caso": "renderiza /producto/9999 con su encabezado",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 2
+  },
+  {
+    "suite": "Páginas y navegación de la tienda",
+    "caso": "mantiene la categoría al navegar desde categorías",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 6
+  },
+  {
+    "suite": "Páginas y navegación de la tienda",
+    "caso": "renderiza /desconocida con su encabezado",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 1
+  },
+  {
+    "suite": "Páginas y navegación de la tienda",
+    "caso": "filtra el catálogo, muestra estado vacío y permite limpiar",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 12
+  },
+  {
+    "suite": "Páginas y navegación de la tienda",
+    "caso": "añade desde detalle y permite cambiar y eliminar cantidades",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 13
+  },
+  {
+    "suite": "Páginas y navegación de la tienda",
+    "caso": "renderiza / con su encabezado",
+    "aprobado": true,
+    "omitido": false,
+    "duracionMs": 3
+  }
+]

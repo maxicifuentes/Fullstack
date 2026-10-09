@@ -1,0 +1,148 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for src/pages/AuthPages.jsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/pages</a> AuthPages.jsx</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>37/37</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>22/22</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>10/10</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>11/11</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from 'react';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { useStore } from '../store/StoreContext';
+&nbsp;
+export function LoginPage() {
+  const { state, dispatch } = useStore(); const navigate = useNavigate();
+  const [form, setForm] = useState({ correo: '', clave: '' }); const [error, setError] = useState('');
+  if (state.session) return &lt;Navigate to={state.session.tipo === 'Cliente' ? '/' : '/admin'} replace /&gt;;
+  const submit = (event) =&gt; { event.preventDefault(); const user = state.users.find((item) =&gt; item.correo.toLowerCase() === form.correo.toLowerCase() &amp;&amp; item.clave === form.clave); if (!user) { setError('Correo o contraseña incorrectos.'); return; } dispatch({ type: 'LOGIN', payload: { id: user.id, nombre: user.nombre, tipo: user.tipo } }); navigate(user.tipo === 'Cliente' ? '/' : '/admin'); };
+  return &lt;AuthShell title="Bienvenido de vuelta" subtitle="Accede para gestionar tus aventuras."&gt;&lt;form onSubmit={submit}&gt;&lt;label className="form-label" htmlFor="correo"&gt;Correo&lt;/label&gt;&lt;input id="correo" className="form-control mb-3" type="email" value={form.correo} onChange={(event) =&gt; setForm({ ...form, correo: event.target.value })} required /&gt;&lt;label className="form-label" htmlFor="clave"&gt;Contraseña&lt;/label&gt;&lt;input id="clave" className="form-control" type="password" value={form.clave} onChange={(event) =&gt; setForm({ ...form, clave: event.target.value })} required /&gt;{error &amp;&amp; &lt;div className="alert alert-danger mt-3"&gt;{error}&lt;/div&gt;}&lt;button className="btn btn-primary w-100 mt-4"&gt;Iniciar sesión&lt;/button&gt;&lt;p className="small text-secondary mt-3 mb-0"&gt;Prueba: admin@duoc.cl / admin1&lt;/p&gt;&lt;p className="small text-secondary"&gt;¿No tienes cuenta? &lt;Link to="/registro"&gt;Regístrate&lt;/Link&gt;&lt;/p&gt;&lt;/form&gt;&lt;/AuthShell&gt;;
+}
+&nbsp;
+export function RegisterPage() {
+  const { state, dispatch } = useStore(); const navigate = useNavigate();
+  const [form, setForm] = useState({ nombre: '', apellidos: '', correo: '', clave: '' }); const [error, setError] = useState('');
+  const change = (event) =&gt; setForm({ ...form, [event.target.name]: event.target.value });
+  const submit = (event) =&gt; { event.preventDefault(); if (!form.nombre || !form.apellidos || !/^\S+@\S+\.\S+$/.test(form.correo) || form.clave.length &lt; 4) { setError('Completa todos los datos con un correo válido y una clave de 4 caracteres o más.'); return; } if (state.users.some((item) =&gt; item.correo.toLowerCase() === form.correo.toLowerCase())) { setError('Este correo ya está registrado.'); return; } dispatch({ type: 'ADD_USER', payload: { ...form, id: Date.now(), tipo: 'Cliente', run: '', region: '', comuna: '', direccion: '' } }); navigate('/login'); };
+  return &lt;AuthShell title="Crea tu cuenta" subtitle="Únete a la comunidad Checkpoint."&gt;&lt;form onSubmit={submit}&gt;&lt;div className="row g-3"&gt;&lt;div className="col-md-6"&gt;&lt;label className="form-label" htmlFor="nombre"&gt;Nombre&lt;/label&gt;&lt;input className="form-control" id="nombre" name="nombre" value={form.nombre} onChange={change} /&gt;&lt;/div&gt;&lt;div className="col-md-6"&gt;&lt;label className="form-label" htmlFor="apellidos"&gt;Apellidos&lt;/label&gt;&lt;input className="form-control" id="apellidos" name="apellidos" value={form.apellidos} onChange={change} /&gt;&lt;/div&gt;&lt;div className="col-12"&gt;&lt;label className="form-label" htmlFor="correo"&gt;Correo&lt;/label&gt;&lt;input className="form-control" id="correo" name="correo" type="email" value={form.correo} onChange={change} /&gt;&lt;/div&gt;&lt;div className="col-12"&gt;&lt;label className="form-label" htmlFor="clave"&gt;Contraseña&lt;/label&gt;&lt;input className="form-control" id="clave" name="clave" type="password" value={form.clave} onChange={change} /&gt;&lt;/div&gt;&lt;/div&gt;{error &amp;&amp; &lt;div className="alert alert-danger mt-3"&gt;{error}&lt;/div&gt;}&lt;button className="btn btn-primary w-100 mt-4"&gt;Crear mi cuenta&lt;/button&gt;&lt;/form&gt;&lt;/AuthShell&gt;;
+}
+&nbsp;
+function AuthShell({ title, subtitle, children }) { return &lt;section className="auth-section"&gt;&lt;div className="container"&gt;&lt;div className="auth-card"&gt;&lt;div className="auth-visual"&gt;&lt;i className="bi bi-controller" /&gt;&lt;span&gt;CHECKPOINT&lt;br /&gt;&lt;b&gt;GAMES&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div className="auth-form"&gt;&lt;span className="eyebrow"&gt;Cuenta&lt;/span&gt;&lt;h1&gt;{title}&lt;/h1&gt;&lt;p className="text-secondary"&gt;{subtitle}&lt;/p&gt;{children}&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/section&gt;; }
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2026-10-06T23:47:55.144Z
+            </div>
+        <script src="../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
+    </body>
+</html>
+    

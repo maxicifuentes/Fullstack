@@ -1,0 +1,42 @@
+{
+  "name": "checkpoint-games-react",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "karma start karma.conf.cjs --single-run",
+    "test:watch": "karma start karma.conf.cjs",
+    "test:coverage": "karma start karma.conf.cjs --single-run"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "bootstrap": "latest",
+    "bootstrap-icons": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-router-dom": "latest"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "latest",
+    "@testing-library/react": "latest",
+    "@babel/core": "latest",
+    "@babel/preset-env": "latest",
+    "@babel/preset-react": "latest",
+    "babel-loader": "latest",
+    "babel-plugin-istanbul": "latest",
+    "esbuild": "latest",
+    "jasmine-core": "latest",
+    "karma": "latest",
+    "karma-coverage": "latest",
+    "karma-chrome-launcher": "latest",
+    "karma-esbuild": "latest",
+    "karma-jasmine": "latest",
+    "karma-jsdom-launcher": "latest",
+    "karma-webpack": "latest",
+    "webpack": "latest",
+    "vite": "latest"
+  }
+}

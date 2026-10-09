@@ -1,0 +1,202 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for src/pages/CheckoutPage.jsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/pages</a> CheckoutPage.jsx</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>39/39</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>30/30</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>13/13</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>24/24</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">96x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">80x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useMemo, useState } from 'react';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import PageHero from '../components/PageHero';
+import { REGIONES } from '../data/seed';
+import { useStore } from '../store/StoreContext';
+import { cartTotals, makeOrder, money, validateCheckout } from '../utils/appUtils';
+&nbsp;
+function Field({ label, name, error, children, ...props }) {
+  return &lt;div&gt;&lt;label className="form-label" htmlFor={name}&gt;{label}&lt;/label&gt;{children || &lt;input className={`form-control ${error ? 'is-invalid' : ''}`} id={name} name={name} {...props} /&gt;}{error &amp;&amp; &lt;div className="invalid-feedback d-block"&gt;{error}&lt;/div&gt;}&lt;/div&gt;;
+}
+&nbsp;
+export default function CheckoutPage() {
+  const { state, dispatch } = useStore();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const user = state.users.find((item) =&gt; item.id === state.session?.id);
+  const [form, setForm] = useState({ nombre: user ? `${user.nombre} ${user.apellidos}` : '', correo: user?.correo || '', direccion: user?.direccion || '', region: user?.region || '', comuna: user?.comuna || '', entrega: 'Digital inmediata', ...location.state?.customer, tarjeta: '' });
+  const [errors, setErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
+  const totals = cartTotals(state.cart, state.products);
+  const communes = useMemo(() =&gt; REGIONES.find((item) =&gt; item.nombre === form.region)?.comunas || [], [form.region]);
+  if (!totals.lines.length &amp;&amp; !submitted) return &lt;Navigate to="/carrito" replace /&gt;;
+  const change = (event) =&gt; setForm((current) =&gt; ({ ...current, [event.target.name]: event.target.value }));
+  const submit = (event) =&gt; {
+    event.preventDefault();
+    const nextErrors = validateCheckout(form); setErrors(nextErrors);
+    if (Object.keys(nextErrors).length) return;
+    const failed = form.tarjeta.replace(/\s/g, '').endsWith('0000');
+    if (failed) { const { tarjeta, ...customer } = form; navigate('/pago/error', { state: { customer, totals } }); return; }
+    const order = makeOrder({ cart: state.cart, products: state.products, customer: form });
+    // Evita que el carrito recién vaciado reemplace la navegación al comprobante.
+    setSubmitted(true);
+    dispatch({ type: 'ADD_ORDER', payload: order });
+    navigate('/pago/exito', { state: { order } });
+  };
+  return &lt;&gt;&lt;PageHero eyebrow="Último paso" title="Checkout" description="Completa la entrega y utiliza una tarjeta de prueba de 16 dígitos. Las terminadas en 0000 simulan un rechazo." /&gt;
+    &lt;section className="container pb-5"&gt;&lt;form onSubmit={submit} noValidate&gt;&lt;div className="row g-4"&gt;&lt;div className="col-lg-8"&gt;&lt;div className="surface-card p-4 p-lg-5"&gt;&lt;h2 className="h4 mb-4"&gt;&lt;span className="step-number"&gt;1&lt;/span&gt; Datos de entrega&lt;/h2&gt;&lt;div className="row g-3"&gt;&lt;div className="col-md-6"&gt;&lt;Field label="Nombre completo" name="nombre" value={form.nombre} onChange={change} error={errors.nombre} /&gt;&lt;/div&gt;&lt;div className="col-md-6"&gt;&lt;Field label="Correo" name="correo" type="email" value={form.correo} onChange={change} error={errors.correo} /&gt;&lt;/div&gt;&lt;div className="col-12"&gt;&lt;Field label="Dirección" name="direccion" value={form.direccion} onChange={change} error={errors.direccion} /&gt;&lt;/div&gt;&lt;div className="col-md-6"&gt;&lt;Field label="Región" name="region" error={errors.region}&gt;&lt;select id="region" name="region" className={`form-select ${errors.region ? 'is-invalid' : ''}`} value={form.region} onChange={(event) =&gt; setForm((current) =&gt; ({ ...current, region: event.target.value, comuna: '' }))}&gt;&lt;option value=""&gt;Selecciona&lt;/option&gt;{REGIONES.map((item) =&gt; &lt;option key={item.nombre}&gt;{item.nombre}&lt;/option&gt;)}&lt;/select&gt;&lt;/Field&gt;&lt;/div&gt;&lt;div className="col-md-6"&gt;&lt;Field label="Comuna" name="comuna" error={errors.comuna}&gt;&lt;select id="comuna" name="comuna" className={`form-select ${errors.comuna ? 'is-invalid' : ''}`} value={form.comuna} onChange={change}&gt;&lt;option value=""&gt;Selecciona&lt;/option&gt;{communes.map((item) =&gt; &lt;option key={item}&gt;{item}&lt;/option&gt;)}&lt;/select&gt;&lt;/Field&gt;&lt;/div&gt;&lt;/div&gt;&lt;hr className="my-4" /&gt;&lt;h2 className="h4 mb-4"&gt;&lt;span className="step-number"&gt;2&lt;/span&gt; Pago de demostración&lt;/h2&gt;&lt;Field label="Número de tarjeta" name="tarjeta" inputMode="numeric" maxLength="19" value={form.tarjeta} onChange={change} error={errors.tarjeta} placeholder="4242 4242 4242 4242" /&gt;&lt;div className="form-text"&gt;No ingreses datos bancarios reales.&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div className="col-lg-4"&gt;&lt;aside className="surface-card summary-card"&gt;&lt;h2 className="h4"&gt;Tu pedido&lt;/h2&gt;{totals.lines.map((line) =&gt; &lt;div className="checkout-line" key={line.id}&gt;&lt;span&gt;{line.quantity}× {line.product.nombre}&lt;/span&gt;&lt;strong&gt;{money(line.quantity * line.product.precio)}&lt;/strong&gt;&lt;/div&gt;)}&lt;div className="summary-row total"&gt;&lt;span&gt;Total&lt;/span&gt;&lt;strong&gt;{money(totals.total)}&lt;/strong&gt;&lt;/div&gt;&lt;button className="btn btn-primary btn-lg w-100" type="submit"&gt;Confirmar compra&lt;/button&gt;&lt;/aside&gt;&lt;/div&gt;&lt;/div&gt;&lt;/form&gt;&lt;/section&gt;
+  &lt;/&gt;;
+}
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2026-10-06T23:47:55.144Z
+            </div>
+        <script src="../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
+    </body>
+</html>
+    
