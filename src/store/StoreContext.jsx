@@ -21,6 +21,7 @@ export function storeReducer(state, action) {
     case 'LOGIN': return { ...state, session: action.payload };
     case 'LOGOUT': return { ...state, session: null };
     case 'HYDRATE_PRODUCTS': return { ...state, products: action.payload };
+    case 'HYDRATE_USERS': return { ...state, users: action.payload };
     case 'HYDRATE_ORDERS': return { ...state, orders: action.payload };
     case 'ADD_CART': {
       const product = state.products.find((item) => item.id === action.payload.id);
@@ -72,6 +73,10 @@ export function StoreProvider({ children }) {
       .then((orders) => dispatch({ type: 'HYDRATE_ORDERS', payload: orders.map((order) => ({ ...order, estado: statusLabel(order.estado), items: order.detalles.reduce((sum, line) => sum + line.cantidad, 0) })) }))
       .catch(() => null);
   }, [state.session?.token]);
+  React.useEffect(() => {
+    if (state.session?.tipo !== 'Administrador' || !state.session?.token) return;
+    api.users(state.session.token).then((users) => dispatch({ type: 'HYDRATE_USERS', payload: users.map((user) => ({ ...user, tipo: roleLabel(user.rol) })) })).catch(() => null);
+  }, [state.session?.tipo, state.session?.token]);
   React.useEffect(() => localStorage.setItem('cg2_products', JSON.stringify(state.products)), [state.products]);
   React.useEffect(() => localStorage.setItem('cg2_users', JSON.stringify(state.users)), [state.users]);
   React.useEffect(() => localStorage.setItem('cg2_orders', JSON.stringify(state.orders)), [state.orders]);
@@ -79,10 +84,12 @@ export function StoreProvider({ children }) {
   React.useEffect(() => state.session ? localStorage.setItem('cg2_session', JSON.stringify(state.session)) : localStorage.removeItem('cg2_session'), [state.session]);
   const actions = useMemo(() => ({
     async login(form) { const user = await api.login(form); const session = { id: user.id, nombre: user.nombre, tipo: roleLabel(user.tipo), token: user.token, correo: user.correo }; dispatch({ type: 'LOGIN', payload: session }); return session; },
-    async register(form) { return api.register(form); },
+    async register(form) { const user = await api.register(form); const saved = { id: user.id, nombre: user.nombre, apellidos: form.apellidos, correo: user.correo, tipo: roleLabel(user.tipo), clave: form.clave }; dispatch({ type: 'ADD_USER', payload: saved }); return saved; },
     async createOrder() { const order = await api.createOrder(state.cart, state.session?.token); const adapted = { ...order, estado: statusLabel(order.estado), items: order.detalles.reduce((sum, line) => sum + line.cantidad, 0) }; dispatch({ type: 'ADD_ORDER', payload: adapted }); return adapted; },
     async saveProduct(product) { const saved = await api.saveProduct(product, state.session?.token); dispatch({ type: 'SAVE_PRODUCT', payload: saved }); return saved; },
     async deleteProduct(id) { await api.deleteProduct(id, state.session?.token); dispatch({ type: 'DELETE_PRODUCT', payload: id }); },
+    async saveUser(user) { const payload = { ...user, rol: user.tipo?.toUpperCase() }; const saved = await api.saveUser(payload, state.session?.token); const mapped = { ...saved, tipo: roleLabel(saved.rol) }; dispatch({ type: 'SAVE_USER', payload: mapped }); return mapped; },
+    async deleteUser(id) { await api.deleteUser(id, state.session?.token); dispatch({ type: 'DELETE_USER', payload: id }); },
     async updateOrderStatus(id, estado) { const updated = await api.updateOrderStatus(id, statusApiValue(estado), state.session?.token); dispatch({ type: 'UPDATE_ORDER_STATUS', payload: { id: updated.id, estado: statusLabel(updated.estado) } }); return updated; },
   }), [state.cart, state.session?.token]);
   const value = useMemo(() => ({ state, dispatch, actions }), [state, actions]);

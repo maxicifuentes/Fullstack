@@ -1,0 +1,142 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for src/services/api.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/services</a> api.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">86.2% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>25/29</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">66.66% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>18/27</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">82.35% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>14/17</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>16/16</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">59x</span>
+<span class="cline-any cline-yes">59x</span>
+<span class="cline-any cline-yes">59x</span>
+<span class="cline-any cline-yes">59x</span>
+<span class="cline-any cline-yes">57x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api/v1';
+&nbsp;
+const request = async (path, options = {}, token) =&gt; {
+  const response = await fetch(`${API_URL}${path}`, { ...options, headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}), ...(options.headers || {}) } });
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (response.status === 204) <span class="cstat-no" title="statement not covered" >return null;</span>
+  const body = await response.json().catch(<span class="fstat-no" title="function not covered" >()</span> =&gt; (<span class="cstat-no" title="statement not covered" >{})</span>);
+  if (!response.ok) throw new Error(body.mensaje || <span class="branch-1 cbranch-no" title="branch not covered" >'No fue posible comunicarse con la API.')</span>;
+  return body;
+};
+export const api = {
+  products: () =&gt; request('/productos'), login: (form) =&gt; request('/auth/login', { method: 'POST', body: JSON.stringify(form) }), register: (form) =&gt; request('/auth/registro', { method: 'POST', body: JSON.stringify(form) }),
+  saveProduct: (product, token) =&gt; request(product.id ? <span class="branch-0 cbranch-no" title="branch not covered" >`/productos/${product.id}` </span>: '/productos', { method: product.id ? <span class="branch-0 cbranch-no" title="branch not covered" >'PUT' </span>: 'POST', body: JSON.stringify(product) }, token), deleteProduct: <span class="fstat-no" title="function not covered" >(i</span>d, token) =&gt; <span class="cstat-no" title="statement not covered" >request(`/productos/${id}`, { method: 'DELETE' }, token),</span>
+  users: (token) =&gt; request('/usuarios', {}, token), saveUser: (user, token) =&gt; request(user.id ? <span class="branch-0 cbranch-no" title="branch not covered" >`/usuarios/${user.id}` </span>: '/usuarios', { method: user.id ? <span class="branch-0 cbranch-no" title="branch not covered" >'PUT' </span>: 'POST', body: JSON.stringify(user) }, token), deleteUser: <span class="fstat-no" title="function not covered" >(i</span>d, token) =&gt; <span class="cstat-no" title="statement not covered" >request(`/usuarios/${id}`, { method: 'DELETE' }, token),</span>
+  orders: (token) =&gt; request('/boletas', {}, token), createOrder: (items, token) =&gt; request('/boletas', { method: 'POST', body: JSON.stringify({ items: items.map(({ id, quantity }) =&gt; ({ productoId: id, cantidad: quantity })) }) }, token),
+  updateOrderStatus: (id, estado, token) =&gt; request(`/boletas/${id}/estado`, { method: 'PATCH', body: JSON.stringify({ estado }) }, token),
+};
+export const roleLabel = (role) =&gt; ({ ADMINISTRADOR: 'Administrador', VENDEDOR: 'Vendedor', CLIENTE: 'Cliente' }[role] || <span class="branch-1 cbranch-no" title="branch not covered" >role)</span>;
+export const statusLabel = (status) =&gt; ({ PAGADA: 'Pagada', PREPARANDO: 'Preparando', ENVIADA: 'Enviada', ENTREGADA: 'Entregada', CANCELADA: 'Cancelada' }[status] || <span class="branch-1 cbranch-no" title="branch not covered" >status)</span>;
+export const statusApiValue = (status) =&gt; ({ Pagada: 'PAGADA', Preparando: 'PREPARANDO', Enviada: 'ENVIADA', Entregada: 'ENTREGADA', Cancelada: 'CANCELADA' }[status] || <span class="branch-1 cbranch-no" title="branch not covered" >status)</span>;
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2026-11-18T02:10:13.802Z
+            </div>
+        <script src="../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
+    </body>
+</html>
+    

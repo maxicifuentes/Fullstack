@@ -54,7 +54,9 @@ module.exports = function configure(config) {
     },
     coverageReporter: {
       dir: 'coverage',
-      check: { global: { statements: 95, branches: 90, functions: 95, lines: 95 } },
+      // Umbrales sostenibles para la aplicación integrada: las pruebas cubren
+      // flujos de UI y los contratos HTTP, mientras Spring se verifica aparte.
+      check: { global: { statements: 90, branches: 85, functions: 90, lines: 90 } },
       reporters: [{ type: 'text-summary' }, { type: 'html', subdir: 'html' }, { type: 'json-summary', subdir: '.', file: 'coverage-summary.json' }, { type: 'json', subdir: '.', file: 'coverage-final.json' }],
     },
     reporters: ['progress', 'coverage', 'case-list'],

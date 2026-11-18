@@ -10,6 +10,7 @@ const request = async (path, options = {}, token) => {
 export const api = {
   products: () => request('/productos'), login: (form) => request('/auth/login', { method: 'POST', body: JSON.stringify(form) }), register: (form) => request('/auth/registro', { method: 'POST', body: JSON.stringify(form) }),
   saveProduct: (product, token) => request(product.id ? `/productos/${product.id}` : '/productos', { method: product.id ? 'PUT' : 'POST', body: JSON.stringify(product) }, token), deleteProduct: (id, token) => request(`/productos/${id}`, { method: 'DELETE' }, token),
+  users: (token) => request('/usuarios', {}, token), saveUser: (user, token) => request(user.id ? `/usuarios/${user.id}` : '/usuarios', { method: user.id ? 'PUT' : 'POST', body: JSON.stringify(user) }, token), deleteUser: (id, token) => request(`/usuarios/${id}`, { method: 'DELETE' }, token),
   orders: (token) => request('/boletas', {}, token), createOrder: (items, token) => request('/boletas', { method: 'POST', body: JSON.stringify({ items: items.map(({ id, quantity }) => ({ productoId: id, cantidad: quantity })) }) }, token),
   updateOrderStatus: (id, estado, token) => request(`/boletas/${id}/estado`, { method: 'PATCH', body: JSON.stringify({ estado }) }, token),
 };

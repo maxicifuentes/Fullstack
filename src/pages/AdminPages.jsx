@@ -44,13 +44,13 @@ export function AdminProductDetail() { const { id }=useParams(); const { state }
 const emptyUser = { nombre: '', apellidos: '', correo: '', clave: '', tipo: 'Cliente', run: '', region: '', comuna: '', direccion: '' };
 
 export function AdminUsers() {
-  const { state, dispatch } = useStore();
+  const { state, actions } = useStore();
   const [form, setForm] = useState(null);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
   const edit = (user) => { setForm({ ...user }); setError(''); setMessage(''); };
   const change = (event) => setForm({ ...form, [event.target.name]: event.target.value });
-  const submit = (event) => {
+  const submit = async (event) => {
     event.preventDefault();
     const user = { ...form, nombre: form.nombre.trim(), apellidos: form.apellidos.trim(), correo: form.correo.trim().toLowerCase() };
     if (!user.nombre || !user.apellidos || !/^\S+@\S+\.\S+$/.test(user.correo) || user.clave.length < 4) {
@@ -59,14 +59,13 @@ export function AdminUsers() {
     if (state.users.some((item) => item.id !== user.id && item.correo.toLowerCase() === user.correo)) {
       setError('Este correo ya está registrado.'); return;
     }
-    dispatch({ type: 'SAVE_USER', payload: { ...user, id: user.id || Date.now() } });
-    setForm(null); setError(''); setMessage('Usuario guardado correctamente.');
+    try { await actions.saveUser(user); setForm(null); setError(''); setMessage('Usuario guardado correctamente.'); }
+    catch (apiError) { setError(apiError.message); }
   };
-  const remove = (user) => {
+  const remove = async (user) => {
     if (!window.confirm(`¿Eliminar a ${user.nombre} ${user.apellidos}?`)) return;
-    dispatch({ type: 'DELETE_USER', payload: user.id });
-    if (form?.id === user.id) setForm(null);
-    setMessage('Usuario eliminado correctamente.');
+    try { await actions.deleteUser(user.id); if (form?.id === user.id) setForm(null); setMessage('Usuario eliminado correctamente.'); }
+    catch (apiError) { setError(apiError.message); }
   };
   const rows = state.users.map((user) => [
     `${user.nombre} ${user.apellidos}`, user.correo, user.tipo, user.region || 'No informada',
