@@ -53,7 +53,7 @@ export function storeReducer(state, action) {
       const user = action.payload;
       const exists = state.users.some((item) => item.id === user.id);
       const session = state.session?.id === user.id
-        ? { id: user.id, nombre: user.nombre, tipo: user.tipo }
+        ? { ...state.session, id: user.id, nombre: user.nombre, tipo: user.tipo, correo: user.correo }
         : state.session;
       return { ...state, session, users: exists ? state.users.map((item) => item.id === user.id ? user : item) : [...state.users, user] };
     }
