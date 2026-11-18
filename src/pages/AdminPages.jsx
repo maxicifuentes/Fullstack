@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
-import { Link, NavLink, Outlet, useNavigate, useParams } from 'react-router-dom';
+import { Link, NavLink, Navigate, Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useStore } from '../store/StoreContext';
 import { money } from '../utils/appUtils';
 
+const dateLabel = (value) => value ? new Intl.DateTimeFormat('es-CL', { dateStyle: 'medium' }).format(new Date(value)) : 'Sin fecha';
+
 export function AdminLayout() {
   const { state } = useStore();
+  const location = useLocation();
   const links = [['/admin','bi-grid','Resumen'],['/admin/productos','bi-box','Productos'],['/admin/usuarios','bi-people','Usuarios'],['/admin/ordenes','bi-receipt','Órdenes']];
-  return <div className="admin-shell"><aside className="admin-sidebar"><Link className="brand" to="/"><span className="brand-mark"><i className="bi bi-controller" /></span><span>CHECKPOINT <b>GAMES</b></span></Link><div className="admin-user"><span>{state.session?.nombre?.[0]}</span><div><strong>{state.session?.nombre}</strong><small>{state.session?.tipo}</small></div></div><nav>{links.filter(([to]) => to !== '/admin/usuarios' || state.session?.tipo === 'Administrador').map(([to,icon,label]) => <NavLink key={to} to={to} end={to === '/admin'}><i className={`bi ${icon}`} />{label}</NavLink>)}</nav><Link className="back-store" to="/"><i className="bi bi-arrow-left" /> Volver a la tienda</Link></aside><main className="admin-content"><Outlet /></main></div>;
+  const visibleLinks = state.session?.tipo === 'Vendedor'
+    ? links.filter(([to]) => to === '/admin/productos' || to === '/admin/ordenes')
+    : links;
+  if (state.session?.tipo === 'Vendedor' && location.pathname === '/admin') return <Navigate to="/admin/productos" replace />;
+  return <div className="admin-shell"><aside className="admin-sidebar"><Link className="brand" to="/"><span className="brand-mark"><i className="bi bi-controller" /></span><span>CHECKPOINT <b>GAMES</b></span></Link><div className="admin-user"><span>{state.session?.nombre?.[0]}</span><div><strong>{state.session?.nombre}</strong><small>{state.session?.tipo}</small></div></div><nav>{visibleLinks.map(([to,icon,label]) => <NavLink key={to} to={to} end={to === '/admin'}><i className={`bi ${icon}`} />{label}</NavLink>)}</nav><Link className="back-store" to="/"><i className="bi bi-arrow-left" /> Volver a la tienda</Link></aside><main className="admin-content"><Outlet /></main></div>;
 }
 
 export function AdminDashboard() {
@@ -16,18 +23,19 @@ export function AdminDashboard() {
 }
 
 export function AdminProducts() {
-  const { state, dispatch } = useStore(); const canEdit = state.session?.tipo === 'Administrador';
-  const rows = state.products.map((product) => [product.codigo,product.nombre,product.categoria,money(product.precio),product.stock,<div className="table-actions" key={product.id}><Link className="btn btn-sm btn-outline-light" to={`/admin/productos/${product.id}`}>Ver</Link>{canEdit && <><Link className="btn btn-sm btn-primary" to={`/admin/productos/${product.id}/editar`}>Editar</Link><button className="btn btn-sm btn-outline-danger" onClick={() => window.confirm(`¿Eliminar ${product.nombre}?`) && dispatch({ type: 'DELETE_PRODUCT', payload: product.id })}>Eliminar</button></>}</div>]);
+  const { state, actions } = useStore(); const canEdit = state.session?.tipo === 'Administrador';
+  const remove = async (product) => { if (!window.confirm(`¿Eliminar ${product.nombre}?`)) return; try { await actions.deleteProduct(product.id); } catch (error) { window.alert(error.message); } };
+  const rows = state.products.map((product) => [product.codigo,product.nombre,product.categoria,money(product.precio),product.stock,<div className="table-actions" key={product.id}><Link className="btn btn-sm btn-outline-light" to={`/admin/productos/${product.id}`}>Ver</Link>{canEdit && <><Link className="btn btn-sm btn-primary" to={`/admin/productos/${product.id}/editar`}>Editar</Link><button className="btn btn-sm btn-outline-danger" onClick={() => remove(product)}>Eliminar</button></>}</div>]);
   return <section className="admin-card"><div className="admin-card-head"><div><span className="eyebrow">Inventario</span><h1>Productos</h1></div>{canEdit && <Link className="btn btn-primary" to="/admin/productos/nuevo"><i className="bi bi-plus-lg" /> Nuevo producto</Link>}</div><AdminTable headers={['Código','Nombre','Categoría','Precio','Stock','Acciones']} rows={rows} /></section>;
 }
 
 export function AdminProductForm() {
-  const { id } = useParams(); const navigate = useNavigate(); const { state, dispatch } = useStore();
+  const { id } = useParams(); const navigate = useNavigate(); const { state, actions } = useStore();
   const [error, setError] = useState('');
   const existing = state.products.find((item) => item.id === Number(id));
   const [form, setForm] = useState(existing || { codigo:'',nombre:'',descripcion:'',precio:0,precioAnterior:null,stock:0,stockCritico:0,categoria:'Acción',plataforma:'PC',color:'#7957ff',rating:4.5 });
   const change = (event) => setForm({ ...form, [event.target.name]: event.target.type === 'number' ? Number(event.target.value) : event.target.value });
-  const submit = (event) => { event.preventDefault(); if (!form.codigo.trim() || !form.nombre.trim() || form.precio < 0 || form.stock < 0) { setError('Completa código y nombre; precio y stock no pueden ser negativos.'); return; } if (state.products.some((product) => product.id !== existing?.id && product.codigo.toLowerCase() === form.codigo.trim().toLowerCase())) { setError('Este código de producto ya está registrado.'); return; } dispatch({ type:'SAVE_PRODUCT', payload:{ ...form, codigo: form.codigo.trim(), nombre: form.nombre.trim(), id: existing?.id || Date.now() } }); navigate('/admin/productos'); };
+  const submit = async (event) => { event.preventDefault(); if (!form.codigo.trim() || !form.nombre.trim() || form.precio < 0 || form.stock < 0) { setError('Completa código y nombre; precio y stock no pueden ser negativos.'); return; } if (state.products.some((product) => product.id !== existing?.id && product.codigo.toLowerCase() === form.codigo.trim().toLowerCase())) { setError('Este código de producto ya está registrado.'); return; } try { const payload = { ...form, codigo: form.codigo.trim(), nombre: form.nombre.trim() }; if (!existing) delete payload.id; await actions.saveProduct(payload); navigate('/admin/productos'); } catch (apiError) { setError(apiError.message); } };
   return <section className="admin-card"><div className="admin-card-head"><div><span className="eyebrow">Mantenedor</span><h1>{existing ? 'Editar producto' : 'Nuevo producto'}</h1></div></div><form onSubmit={submit}>{error && <div className="alert alert-danger" role="alert">{error}</div>}<div className="row g-3">{[['codigo','Código','text'],['nombre','Nombre','text'],['precio','Precio','number'],['stock','Stock','number'],['stockCritico','Stock crítico','number'],['plataforma','Plataforma','text']].map(([name,label,type])=><div className="col-md-6" key={name}><label className="form-label" htmlFor={name}>{label}</label><input className="form-control" id={name} name={name} type={type} min={type==='number'?0:undefined} value={form[name]} onChange={change} required={['codigo','nombre','precio','stock'].includes(name)} /></div>)}<div className="col-md-6"><label className="form-label" htmlFor="categoria">Categoría</label><select className="form-select" id="categoria" name="categoria" value={form.categoria} onChange={change}>{['Acción','Aventura','RPG','Deportes','Carreras','Estrategia','Terror','Indie'].map((item)=><option key={item}>{item}</option>)}</select></div><div className="col-md-6"><label className="form-label" htmlFor="color">Color</label><input className="form-control form-control-color" id="color" name="color" type="color" value={form.color} onChange={change} /></div><div className="col-12"><label className="form-label" htmlFor="descripcion">Descripción</label><textarea className="form-control" id="descripcion" name="descripcion" rows="4" maxLength="500" value={form.descripcion} onChange={change} /></div><div className="col-12 d-flex gap-2"><button className="btn btn-primary">Guardar producto</button><button type="button" className="btn btn-outline-light" onClick={() => navigate(-1)}>Cancelar</button></div></div></form></section>;
 }
 
@@ -85,18 +93,21 @@ export function AdminUsers() {
 }
 
 export function AdminOrders() {
-  const { state, dispatch } = useStore();
+  const { state, actions } = useStore();
+  const canEdit = state.session?.tipo === 'Administrador';
   const [message, setMessage] = useState('');
   const statuses = ['Pagada', 'Preparando', 'Enviada', 'Entregada', 'Cancelada'];
-  const update = (id, estado) => {
-    dispatch({ type: 'UPDATE_ORDER_STATUS', payload: { id, estado } });
-    setMessage(`Orden #${id} actualizada a ${estado}.`);
+  const update = async (id, estado) => {
+    try { await actions.updateOrderStatus(id, estado); setMessage(`Orden #${id} actualizada a ${estado}.`); }
+    catch (error) { setMessage(`No fue posible actualizar la orden: ${error.message}`); }
   };
   return <section className="admin-card"><div className="admin-card-head"><div><span className="eyebrow">Operación</span><h1>Órdenes</h1></div></div>
     {message && <div className="alert alert-success" role="status">{message}</div>}
     <AdminTable headers={['N.º', 'Fecha', 'Cliente', 'Estado', 'Ítems', 'Total']} rows={state.orders.slice().reverse().map((order) => [
-      `#${order.id}`, order.fecha, order.cliente,
-      <select key={order.id} className="form-select" aria-label={`Estado de orden ${order.id}`} value={order.estado} onChange={(event) => update(order.id, event.target.value)}>{[...new Set([...statuses, order.estado])].map((status) => <option key={status}>{status}</option>)}</select>,
+      `#${order.id}`, dateLabel(order.fecha), order.cliente,
+      canEdit
+        ? <select key={order.id} className="form-select" aria-label={`Estado de orden ${order.id}`} value={order.estado} onChange={(event) => update(order.id, event.target.value)}>{[...new Set([...statuses, order.estado])].map((status) => <option key={status}>{status}</option>)}</select>
+        : <span className="status-pill">{order.estado}</span>,
       order.items, money(order.total),
     ])} />
   </section>;

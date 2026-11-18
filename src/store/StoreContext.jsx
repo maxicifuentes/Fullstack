@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useMemo, useReducer } from 'react';
 import { ORDENES_INICIALES, PRODUCTOS_INICIALES, USUARIOS_INICIALES } from '../data/seed';
+import { api, roleLabel, statusApiValue, statusLabel } from '../services/api';
 
 const StoreContext = createContext(null);
 
@@ -19,6 +20,8 @@ export function storeReducer(state, action) {
   switch (action.type) {
     case 'LOGIN': return { ...state, session: action.payload };
     case 'LOGOUT': return { ...state, session: null };
+    case 'HYDRATE_PRODUCTS': return { ...state, products: action.payload };
+    case 'HYDRATE_ORDERS': return { ...state, orders: action.payload };
     case 'ADD_CART': {
       const product = state.products.find((item) => item.id === action.payload.id);
       const found = state.cart.find((item) => item.id === action.payload.id);
@@ -62,12 +65,27 @@ export function storeReducer(state, action) {
 
 export function StoreProvider({ children }) {
   const [state, dispatch] = useReducer(storeReducer, undefined, initialState);
+  React.useEffect(() => { api.products().then((products) => dispatch({ type: 'HYDRATE_PRODUCTS', payload: products })).catch(() => null); }, []);
+  React.useEffect(() => {
+    if (!state.session?.token) return;
+    api.orders(state.session.token)
+      .then((orders) => dispatch({ type: 'HYDRATE_ORDERS', payload: orders.map((order) => ({ ...order, estado: statusLabel(order.estado), items: order.detalles.reduce((sum, line) => sum + line.cantidad, 0) })) }))
+      .catch(() => null);
+  }, [state.session?.token]);
   React.useEffect(() => localStorage.setItem('cg2_products', JSON.stringify(state.products)), [state.products]);
   React.useEffect(() => localStorage.setItem('cg2_users', JSON.stringify(state.users)), [state.users]);
   React.useEffect(() => localStorage.setItem('cg2_orders', JSON.stringify(state.orders)), [state.orders]);
   React.useEffect(() => localStorage.setItem('cg2_cart', JSON.stringify(state.cart)), [state.cart]);
   React.useEffect(() => state.session ? localStorage.setItem('cg2_session', JSON.stringify(state.session)) : localStorage.removeItem('cg2_session'), [state.session]);
-  const value = useMemo(() => ({ state, dispatch }), [state]);
+  const actions = useMemo(() => ({
+    async login(form) { const user = await api.login(form); const session = { id: user.id, nombre: user.nombre, tipo: roleLabel(user.tipo), token: user.token, correo: user.correo }; dispatch({ type: 'LOGIN', payload: session }); return session; },
+    async register(form) { return api.register(form); },
+    async createOrder() { const order = await api.createOrder(state.cart, state.session?.token); const adapted = { ...order, estado: statusLabel(order.estado), items: order.detalles.reduce((sum, line) => sum + line.cantidad, 0) }; dispatch({ type: 'ADD_ORDER', payload: adapted }); return adapted; },
+    async saveProduct(product) { const saved = await api.saveProduct(product, state.session?.token); dispatch({ type: 'SAVE_PRODUCT', payload: saved }); return saved; },
+    async deleteProduct(id) { await api.deleteProduct(id, state.session?.token); dispatch({ type: 'DELETE_PRODUCT', payload: id }); },
+    async updateOrderStatus(id, estado) { const updated = await api.updateOrderStatus(id, statusApiValue(estado), state.session?.token); dispatch({ type: 'UPDATE_ORDER_STATUS', payload: { id: updated.id, estado: statusLabel(updated.estado) } }); return updated; },
+  }), [state.cart, state.session?.token]);
+  const value = useMemo(() => ({ state, dispatch, actions }), [state, actions]);
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;
 }
 
